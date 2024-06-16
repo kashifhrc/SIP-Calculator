@@ -1,55 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f2f5;
     margin: 0;
     padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Change from center to flex-start */
-    height: 100vh;
-    overflow-y: scroll; /* Ensure the content is scrollable */
+    align-items: flex-start;
+    min-height: 100vh;
 }
 
 .calculator-container {
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 600px;
     width: 100%;
-    position: fixed; /* Make the form fixed */
-    top: 20px; /* Position it at the top */
-    z-index: 1000; /* Ensure it stays on top of other elements */
+    margin-top: 20px;
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 28px;
+    color: #333;
     margin-bottom: 20px;
+    font-weight: 600;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #555;
 }
 
 input[type="number"] {
     width: calc(100% - 20px);
-    padding: 10px;
-    border: 1px solid #ddd;
+    padding: 12px;
+    border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
 }
 
 button {
     background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -57,13 +64,19 @@ button:hover {
 }
 
 .results {
-    margin-top: 20px;
+    margin-top: 30px;
+}
+
+.results p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
 }
 
 canvas {
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .chart-container {
-    margin-top: 500px; /* Ensure there is enough space below the fixed form */
+    margin-top: 40px;
 }
