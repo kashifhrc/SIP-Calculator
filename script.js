@@ -1,3 +1,5 @@
+let chart;  // Declare a variable to hold the chart instance
+
 function calculateSIP() {
     let monthlyInvestment = document.getElementById("monthlyInvestment").value;
     let annualReturn = document.getElementById("annualReturn").value;
@@ -19,7 +21,14 @@ function calculateSIP() {
 
 function renderChart(investedAmount, estimatedReturns) {
     const ctx = document.getElementById('sipChart').getContext('2d');
-    new Chart(ctx, {
+    
+    // Destroy the previous chart instance if it exists
+    if (chart) {
+        chart.destroy();
+    }
+    
+    // Create a new chart instance
+    chart = new Chart(ctx, {
         type: 'pie',
         data: {
             labels: ['Invested Amount', 'Estimated Returns'],
