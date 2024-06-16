@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SIP Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>SIP Calculator</h1>
+        <form>
+            <div class="form-group">
+                <label for="monthlyInvestment">Monthly Investment (₹):</label>
+                <input type="number" id="monthlyInvestment" required>
+            </div>
+            <div class="form-group">
+                <label for="annualReturn">Expected Annual Return Rate (%):</label>
+                <input type="number" id="annualReturn" required>
+            </div>
+            <div class="form-group">
+                <label for="years">Time Period (Years):</label>
+                <input type="number" id="years" required>
+            </div>
+            <button type="button" onclick="calculateSIP()">Calculate</button>
+        </form>
+        <div class="results">
+            <h2>Results</h2>
+            <p>Invested Amount: ₹<span id="investedAmount"></span></p>
+            <p>Estimated Returns: ₹<span id="estimatedReturns"></span></p>
+            <p>Total Value: ₹<span id="totalValue"></span></p>
+        </div>
+        <canvas id="sipChart"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
