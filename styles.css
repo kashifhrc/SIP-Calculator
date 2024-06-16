@@ -5,8 +5,9 @@ body {
     padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Change from center to flex-start */
     height: 100vh;
+    overflow-y: scroll; /* Ensure the content is scrollable */
 }
 
 .calculator-container {
@@ -16,6 +17,9 @@ body {
     padding: 20px;
     max-width: 500px;
     width: 100%;
+    position: fixed; /* Make the form fixed */
+    top: 20px; /* Position it at the top */
+    z-index: 1000; /* Ensure it stays on top of other elements */
 }
 
 h1 {
@@ -58,4 +62,8 @@ button:hover {
 
 canvas {
     margin-top: 20px;
+}
+
+.chart-container {
+    margin-top: 500px; /* Ensure there is enough space below the fixed form */
 }
