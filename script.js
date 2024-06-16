@@ -1,4 +1,5 @@
-let chart;  // Declare a variable to hold the chart instance
+let pieChart;  // Declare a variable to hold the pie chart instance
+let lineChart; // Declare a variable to hold the line chart instance
 
 function calculateSIP() {
     let monthlyInvestment = document.getElementById("monthlyInvestment").value;
@@ -16,19 +17,20 @@ function calculateSIP() {
     document.getElementById("estimatedReturns").innerText = estimatedReturns.toFixed(2);
     document.getElementById("totalValue").innerText = totalValue.toFixed(2);
 
-    renderChart(investedAmount, estimatedReturns);
+    renderPieChart(investedAmount, estimatedReturns);
+    renderLineChart(monthlyInvestment, annualReturn, years);
 }
 
-function renderChart(investedAmount, estimatedReturns) {
-    const ctx = document.getElementById('sipChart').getContext('2d');
+function renderPieChart(investedAmount, estimatedReturns) {
+    const ctx = document.getElementById('sipPieChart').getContext('2d');
     
     // Destroy the previous chart instance if it exists
-    if (chart) {
-        chart.destroy();
+    if (pieChart) {
+        pieChart.destroy();
     }
     
     // Create a new chart instance
-    chart = new Chart(ctx, {
+    pieChart = new Chart(ctx, {
         type: 'pie',
         data: {
             labels: ['Invested Amount', 'Estimated Returns'],
@@ -39,6 +41,70 @@ function renderChart(investedAmount, estimatedReturns) {
         },
         options: {
             responsive: true
+        }
+    });
+}
+
+function renderLineChart(monthlyInvestment, annualReturn, years) {
+    const ctx = document.getElementById('sipLineChart').getContext('2d');
+    
+    // Destroy the previous chart instance if it exists
+    if (lineChart) {
+        lineChart.destroy();
+    }
+
+    let labels = [];
+    let totalValues = [];
+    let investedAmounts = [];
+
+    let monthlyRate = (annualReturn / 100) / 12;
+    let totalValue = 0;
+    let investedAmount = 0;
+
+    for (let year = 1; year <= years; year++) {
+        labels.push(year);
+        investedAmount += monthlyInvestment * 12;
+        totalValue = monthlyInvestment * (((1 + monthlyRate) ** (year * 12) - 1) / monthlyRate) * (1 + monthlyRate);
+        investedAmounts.push(investedAmount);
+        totalValues.push(totalValue);
+    }
+
+    // Create a new chart instance
+    lineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Invested Amount',
+                    data: investedAmounts,
+                    borderColor: '#007bff',
+                    fill: false
+                },
+                {
+                    label: 'Total Value',
+                    data: totalValues,
+                    borderColor: '#28a745',
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Years'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Value (₹)'
+                    }
+                }
+            }
         }
     });
 }
