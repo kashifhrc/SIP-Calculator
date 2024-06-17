@@ -36,11 +36,33 @@ function renderPieChart(investedAmount, estimatedReturns) {
             labels: ['Invested Amount', 'Estimated Returns'],
             datasets: [{
                 data: [investedAmount, estimatedReturns],
-                backgroundColor: ['#007bff', '#28a745']
+                backgroundColor: ['#007bff', '#28a745'],
+                hoverBackgroundColor: ['#0056b3', '#1c7430']
             }]
         },
         options: {
-            responsive: true
+            responsive: true,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            label += new Intl.NumberFormat('en-US', {
+                                style: 'currency',
+                                currency: 'INR'
+                            }).format(context.raw);
+                            return label;
+                        }
+                    }
+                },
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                }
+            }
         }
     });
 }
