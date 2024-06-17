@@ -79,13 +79,27 @@ function renderLineChart(monthlyInvestment, annualReturn, years) {
                     label: 'Invested Amount',
                     data: investedAmounts,
                     borderColor: '#007bff',
-                    fill: false
+                    fill: false,
+                    tension: 0.4,
+                    pointRadius: 5,
+                    pointBackgroundColor: '#007bff',
+                    pointBorderColor: '#007bff',
+                    pointHoverRadius: 7,
+                    pointHoverBackgroundColor: '#007bff',
+                    pointHoverBorderColor: '#007bff'
                 },
                 {
                     label: 'Total Value',
                     data: totalValues,
                     borderColor: '#28a745',
-                    fill: false
+                    fill: false,
+                    tension: 0.4,
+                    pointRadius: 5,
+                    pointBackgroundColor: '#28a745',
+                    pointBorderColor: '#28a745',
+                    pointHoverRadius: 7,
+                    pointHoverBackgroundColor: '#28a745',
+                    pointHoverBorderColor: '#28a745'
                 }
             ]
         },
@@ -104,6 +118,20 @@ function renderLineChart(monthlyInvestment, annualReturn, years) {
                         text: 'Value (₹)'
                     }
                 }
+            },
+            plugins: {
+                tooltip: {
+                    mode: 'index',
+                    intersect: false
+                },
+                legend: {
+                    display: true,
+                    position: 'top'
+                }
+            },
+            interaction: {
+                mode: 'index',
+                intersect: false
             }
         }
     });
