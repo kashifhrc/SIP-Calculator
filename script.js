@@ -1,6 +1,16 @@
 let pieChart;  // Declare a variable to hold the pie chart instance
 let lineChart; // Declare a variable to hold the line chart instance
 
+document.getElementById('monthlyInvestmentSlider').addEventListener('input', function() {
+    document.getElementById('monthlyInvestment').value = this.value;
+});
+document.getElementById('annualReturnSlider').addEventListener('input', function() {
+    document.getElementById('annualReturn').value = this.value;
+});
+document.getElementById('yearsSlider').addEventListener('input', function() {
+    document.getElementById('years').value = this.value;
+});
+
 function calculateSIP() {
     let monthlyInvestment = document.getElementById("monthlyInvestment").value;
     let annualReturn = document.getElementById("annualReturn").value;
@@ -13,9 +23,9 @@ function calculateSIP() {
     let investedAmount = monthlyInvestment * months;
     let estimatedReturns = totalValue - investedAmount;
 
-    document.getElementById("investedAmount").innerText = investedAmount.toFixed(2);
-    document.getElementById("estimatedReturns").innerText = estimatedReturns.toFixed(2);
-    document.getElementById("totalValue").innerText = totalValue.toFixed(2);
+    document.getElementById("investedAmount").innerText = `₹${investedAmount.toFixed(2)}`;
+    document.getElementById("estimatedReturns").innerText = `₹${estimatedReturns.toFixed(2)}`;
+    document.getElementById("totalValue").innerText = `₹${totalValue.toFixed(2)}`;
 
     renderPieChart(investedAmount, estimatedReturns);
     renderLineChart(monthlyInvestment, annualReturn, years);
@@ -110,6 +120,15 @@ function renderLineChart(monthlyInvestment, annualReturn, years) {
                     pointHoverBackgroundColor: '#007bff',
                     pointHoverBorderColor: '#007bff'
                 },
+                {
+                    label: 'Total Value',
+                    data: totalValues,
+                    borderColor: '#28a745',
+                    fill: false,
+                    tension:### Updated JavaScript (`script.js`):
+Continuing from where it left off.
+
+```javascript
                 {
                     label: 'Total Value',
                     data: totalValues,

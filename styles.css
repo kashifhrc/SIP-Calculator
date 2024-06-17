@@ -9,6 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    flex-direction: column;
 }
 
 .container {
@@ -24,6 +25,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 30px;
     margin-bottom: 40px;
+    text-align: center;
 }
 
 h1 {
@@ -54,14 +56,19 @@ input[type="number"] {
     text-align: left;
 }
 
+input[type="range"] {
+    width: 100%;
+    margin-top: 10px;
+}
+
 button {
     background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 12px 24px;
+    padding: 16px 32px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
     margin-top: 10px;
     transition: background-color 0.3s ease;
 }
@@ -79,6 +86,20 @@ button:hover {
     font-size: 18px;
     color: #333;
     margin-bottom: 10px;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.label {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.value {
+    font-size: 18px;
 }
 
 .chart-container {
