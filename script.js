@@ -11,6 +11,16 @@ document.getElementById('yearsSlider').addEventListener('input', function() {
     document.getElementById('years').value = this.value;
 });
 
+document.getElementById('monthlyInvestment').addEventListener('input', function() {
+    document.getElementById('monthlyInvestmentSlider').value = this.value;
+});
+document.getElementById('annualReturn').addEventListener('input', function() {
+    document.getElementById('annualReturnSlider').value = this.value;
+});
+document.getElementById('years').addEventListener('input', function() {
+    document.getElementById('yearsSlider').value = this.value;
+});
+
 function calculateSIP() {
     let monthlyInvestment = document.getElementById("monthlyInvestment").value;
     let annualReturn = document.getElementById("annualReturn").value;
@@ -97,83 +107,76 @@ function renderLineChart(monthlyInvestment, annualReturn, years) {
         labels.push(year);
         investedAmount += monthlyInvestment * 12;
         totalValue = monthlyInvestment * (((1 + monthlyRate) ** (year * 12) - 1) / monthlyRate) * (1 + monthlyRate);
-        investedAmounts.push(investedAmount);
-        totalValues.push(totalValue);
-    }
-
-    // Create a new chart instance
-    lineChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [
-                {
-                    label: 'Invested Amount',
-                    data: investedAmounts,
-                    borderColor: '#007bff',
-                    fill: false,
-                    tension: 0.4,
-                    pointRadius: 5,
-                    pointBackgroundColor: '#007bff',
-                    pointBorderColor: '#007bff',
-                    pointHoverRadius: 7,
-                    pointHoverBackgroundColor: '#007bff',
-                    pointHoverBorderColor: '#007bff'
-                },
-                {
-                    label: 'Total Value',
-                    data: totalValues,
-                    borderColor: '#28a745',
-                    fill: false,
-                    tension:### Updated JavaScript (`script.js`):
-Continuing from where it left off.
-
-```javascript
-                {
-                    label: 'Total Value',
-                    data: totalValues,
-                    borderColor: '#28a745',
-                    fill: false,
-                    tension: 0.4,
-                    pointRadius: 5,
-                    pointBackgroundColor: '#28a745',
-                    pointBorderColor: '#28a745',
-                    pointHoverRadius: 7,
-                    pointHoverBackgroundColor: '#28a745',
-                    pointHoverBorderColor: '#28a745'
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Years'
-                    }
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Value (₹)'
-                    }
-                }
-            },
-            plugins: {
-                tooltip: {
-                    mode: 'index',
-                    intersect: false
-                },
-                legend: {
-                    display: true,
-                    position: 'top'
-                }
-            },
-            interaction: {
-                mode: 'index',
-                intersect: false
+        investedAmounts.push(in```javascript
+                totalValue = monthlyInvestment * (((1 + monthlyRate) ** (year * 12) - 1) / monthlyRate) * (1 + monthlyRate);
+                investedAmounts.push(investedAmount);
+                totalValues.push(totalValue);
             }
+
+            // Create a new chart instance
+            lineChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Invested Amount',
+                            data: investedAmounts,
+                            borderColor: '#007bff',
+                            fill: false,
+                            tension: 0.4,
+                            pointRadius: 5,
+                            pointBackgroundColor: '#007bff',
+                            pointBorderColor: '#007bff',
+                            pointHoverRadius: 7,
+                            pointHoverBackgroundColor: '#007bff',
+                            pointHoverBorderColor: '#007bff'
+                        },
+                        {
+                            label: 'Total Value',
+                            data: totalValues,
+                            borderColor: '#28a745',
+                            fill: false,
+                            tension: 0.4,
+                            pointRadius: 5,
+                            pointBackgroundColor: '#28a745',
+                            pointBorderColor: '#28a745',
+                            pointHoverRadius: 7,
+                            pointHoverBackgroundColor: '#28a745',
+                            pointHoverBorderColor: '#28a745'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Years'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Value (₹)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        },
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                }
+            });
         }
-    });
-}
